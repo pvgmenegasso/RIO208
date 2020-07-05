@@ -33,6 +33,7 @@ class Point:
         
 
 
+print(1/(2*np.sqrt(LAMBDA)))
 
 ## Fonctions
 def distance(coorda, coordb):
@@ -391,6 +392,8 @@ sirx = []
 siry = []
 arr = np.empty(shape=[101, 101])
 
+sirs = [0]*101*101
+countsirs = 0
 
 for z in range(100):
 
@@ -400,19 +403,18 @@ for z in range(100):
             
         for j in range(101):
     
-            arr[i][j] = arr[i][j]+(sir(arrx, arry, [i/100, j/100], N))
+            sirs[countsirs]  += (sir(arrx, arry, [i/100, j/100], N))
+            countsirs += 1
+            
+    countsirs = 0
     
             
 
 
 
-arrx100 = [x * 100 for x in arrx]
-arry100 = [x * 100 for x in arry]
-
-ax = sns.heatmap(arr, cmap="YlGnBu_r", alpha = 0.8)
-ma = mp.plot(arrx100, arry100, "go", label = "SIR Pixels")
-ax.invert_yaxis()
-mp.show(ax, ma)
+mp.title("question 4.11/2")
+mp.hist(sirs, ec = "black", label = "histogramme SIR pixels (100 simulations)")
+mp.show()
              
     
     

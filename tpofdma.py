@@ -145,7 +145,7 @@ for s in range(160, 180):
     
 print(outages)
     
-            
+   
         
         
 
